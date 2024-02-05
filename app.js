@@ -2,7 +2,8 @@
 ============================================
 ; Title:  app.js
 ; Author: Victor Soto
-; Date:   01/14/2024 
+; Date:   01/14/2024
+; Updated on: 02/04/2024
 ;===========================================
 */
 
@@ -12,6 +13,7 @@ const http = require('http');
 const swaggerUi = require('swagger-ui-express');
 const swaggerJsdoc = require('swagger-jsdoc');
 const mongoose = require('mongoose');
+const composerAPI = require('./routes/soto-composer-routes');
 
 // Create a new express application
 const app = express();
@@ -43,10 +45,19 @@ const openapiSpecification = swaggerJsdoc(options);
 // Wire the openapiSpecification variable to the app variable
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
-// Use http library to create a new server that listens on port you set (port 3000)
-const server = http.createServer(app);
+// Use the APIs
+app.use('/api/composers', composerAPI);
 
-// Server listens on port and logs a message to the console
-server.listen(port, () => {
-    console.log(`Application started and listening on port ${port}`);
+
+// connection string for MongoDB
+const uri = "mongodb+srv://web420_user:thisismypassword@bellevueuniversity.heixdsl.mongodb.net/web420DB?retryWrites=true&w=majority";
+
+mongoose.connect(uri, {
+    promiseLibrary: require('bluebird'),
+    useUnifiedTopology: true,
+    useNewUrlParser: true
+}).then(() => {
+    console.log(`Connection to web420DB on MongoDB Atlas successful`);
+}).catch(err => {
+    console.log(`MongoDB Error: ${err.message}`);
 });
