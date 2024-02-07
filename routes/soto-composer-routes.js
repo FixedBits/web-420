@@ -32,7 +32,7 @@ const Composer = require("../models/soto-composer");
  *         description: MongoDB Exception
  */
 
-router.get("/composers", async (req, res) => {
+router.get("/", async (req, res) => {
   try {
     const composers = await Composer.find({});
     console.log(composers);
@@ -71,7 +71,8 @@ router.get("/composers", async (req, res) => {
  *       '501':
  *         description: MongoDB Exception
  */
-router.get("/composers/:id", async (req, res) => {
+router.get("/:id", async (req, res) => {
+ 
   try {
     const id = req.params.id;
     Composer.findOne({ _id: id }, function (err, composer) {
@@ -127,7 +128,7 @@ router.get("/composers/:id", async (req, res) => {
  *       '501':
  *         description: MongoDB Exception
  */
-router.post("/composers", async (req, res) => {
+router.post("/", async (req, res) => {
   try {
     let composer = new Composer({
       firstName: req.body.firstName,
@@ -192,7 +193,7 @@ router.post("/composers", async (req, res) => {
  *       '501':
  *         description: MongoDB Exception
  */
-router.put("/composers/:id", async (req, res) => {
+router.put("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     Composer.findOne({ _id: id }, function (err, composer) {
@@ -249,7 +250,7 @@ router.put("/composers/:id", async (req, res) => {
  *       '501':
  *         description: MongoDB Exception
  */
-router.delete("/composers/:id", async (req, res) => {
+router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     Composer.findByIdAndDelete({ _id: id }, function (err, composer) {
