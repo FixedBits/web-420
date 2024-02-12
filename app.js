@@ -16,6 +16,7 @@ const mongoose = require('mongoose');
 
 // Import routes
 const composerAPI = require('./routes/soto-composer-routes');
+const personAPI = require('./routes/soto-person-routes');
 
 // Create a new express application
 const app = express();
@@ -61,6 +62,7 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 // Use the APIs
 app.use('/api/composers', composerAPI);
+app.use('/api/persons', personAPI);
 
 // Start the server
 http.createServer(app).listen(port, () => {
