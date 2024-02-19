@@ -8,15 +8,14 @@
 */
 
 // npm packages
-const express = require('express');
-const http = require('http');
-const swaggerUi = require('swagger-ui-express');
-const swaggerJsdoc = require('swagger-jsdoc');
-const mongoose = require('mongoose');
-
 // Import routes
-const composerAPI = require('./routes/soto-composer-routes');
-const personAPI = require('./routes/soto-person-routes');
+const express = require("express");
+const http = require("http");
+const swaggerUi = require("swagger-ui-express");
+const swaggerJsdoc = require("swagger-jsdoc");
+const mongoose = require("mongoose");
+const composerAPI = require("./routes/soto-composer-routes");
+const personAPI = require("./routes/soto-person-routes");
 const userAPI = require("./routes/soto-session-routes"); 
 
 // Create a new express application
@@ -34,11 +33,11 @@ const uri = "mongodb+srv://web420_user:thisismypassword@bellevueuniversity.heixd
 
 // Connect to MongoDB
 mongoose.connect(uri, {
-    promiseLibrary: require('bluebird'),
+    promiseLibrary: require("bluebird"),
     useUnifiedTopology: true,
     useNewUrlParser: true
 }).then(() => {
-    console.log(`Connection to web420DB on MongoDB Atlas successful`);
+    console.log("Connection to web420DB on MongoDB Atlas successful");
 }).catch(err => {
     console.log(`MongoDB Error: ${err.message}`);
 });
@@ -46,13 +45,13 @@ mongoose.connect(uri, {
 // Swagger definition
 const options = {
     definition: {
-        openapi: '3.0.0',
+        openapi: "3.0.0",
         info: {
-            title: 'WEB 420 RESTful APIs',
-            version: '1.0.0'
+            title: "WEB 420 RESTful APIs",
+            version: "1.0.0"
         },
     },
-    apis: ['./routes/*.js'] // files containing annotations for the OpenAPI Specification
+    apis: ["./routes/*.js"] // files containing annotations for the OpenAPI Specification
 };
 
 // Initialize Swagger JSDoc
@@ -62,12 +61,11 @@ const openapiSpecification = swaggerJsdoc(options);
 app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 
 // Use the APIs
-app.use('/api/composers', composerAPI);
-app.use('/api/persons', personAPI);
-app.use('/api/users', userAPI); 
+app.use("/api/composers", composerAPI);
+app.use("/api/persons", personAPI);
+app.use("/api", userAPI);
 
 // Start the server
 http.createServer(app).listen(port, () => {
     console.log(`Application started and listening on port ${port}`);
 });
-
