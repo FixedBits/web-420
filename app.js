@@ -3,7 +3,7 @@
 ; Title:  app.js
 ; Author: Victor Soto
 ; Date:   01/14/2024
-; Updated on: 02/04/2024
+; Updated on: 02/18/2024
 ;===========================================
 */
 
@@ -17,6 +17,7 @@ const mongoose = require('mongoose');
 // Import routes
 const composerAPI = require('./routes/soto-composer-routes');
 const personAPI = require('./routes/soto-person-routes');
+const userAPI = require("./routes/soto-session-routes"); 
 
 // Create a new express application
 const app = express();
@@ -63,8 +64,10 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 // Use the APIs
 app.use('/api/composers', composerAPI);
 app.use('/api/persons', personAPI);
+app.use('/api/users', userAPI); 
 
 // Start the server
 http.createServer(app).listen(port, () => {
     console.log(`Application started and listening on port ${port}`);
 });
+

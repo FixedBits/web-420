@@ -3,7 +3,7 @@
 ; Title:  soto-person-routes.js
 ; Author: Victor Soto
 ; Date:   02/11/2024 
-; Description: https://github.com/buwebdev/web-420/blob/master/routes/fruit-routes.js
+; Source: https://github.com/buwebdev/web-420/blob/master/routes/fruit-routes.js
 ;===========================================
 */
 
