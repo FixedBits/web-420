@@ -20,7 +20,7 @@ const saltRounds = 10;
 
 /** 
  * @openapi
- * /api/signup:
+ * /api/users/signup:
  *   post:
  *     tags:
  *       - NodeSecurity
@@ -76,7 +76,7 @@ router.post("/signup", async (req, res) => {
 
 /** 
  * @openapi
- * /api/login:
+ * /api/users/login:
  *   post:
  *     tags:
  *       - NodeSecurity
