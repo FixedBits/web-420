@@ -17,6 +17,8 @@ const mongoose = require("mongoose");
 const composerAPI = require("./routes/soto-composer-routes");
 const personAPI = require("./routes/soto-person-routes");
 const userAPI = require("./routes/soto-session-routes"); 
+const customerAPI = require("./routes/soto-node-shopper-routes"); 
+
 
 // Create a new express application
 const app = express();
@@ -29,7 +31,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // MongoDB connection string
-const uri = "mongodb+srv://web420_user:thisismypassword@bellevueuniversity.heixdsl.mongodb.net/web420DB?retryWrites=true&w=majority";
+const uri = "mongodb+srv://web420_user:s3cret@bellevueuniversity.heixdsl.mongodb.net/web420DB?retryWrites=true&w=majority";
 
 // Connect to MongoDB
 mongoose.connect(uri, {
@@ -63,7 +65,9 @@ app.use("/api-docs", swaggerUi.serve, swaggerUi.setup(openapiSpecification));
 // Use the APIs
 app.use("/api/composers", composerAPI);
 app.use("/api/persons", personAPI);
-app.use("/api", userAPI);
+app.use("/api/users", userAPI);
+app.use("/api/customers", customerAPI);
+
 
 // Start the server
 http.createServer(app).listen(port, () => {
