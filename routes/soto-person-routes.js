@@ -3,7 +3,7 @@
 ; Title:  soto-person-routes.js
 ; Author: Victor Soto
 ; Date:   02/11/2024 
-; Source: https://github.com/buwebdev/web-420/blob/master/routes/fruit-routes.js
+; Source: https://github.com/buwebdev/web-420/blob/master/routes/node-tech-routes.js
 ;===========================================
 */
 
@@ -14,7 +14,7 @@ const router = express.Router();
 const Person = require("../models/soto-person");
 
 // Operation: GET
-// Path: /api/persons
+// api/persons
 /**
  * @openapi
  * /api/persons:
@@ -30,7 +30,7 @@ const Person = require("../models/soto-person");
  *       501:
  *         description: MongoDB Exception
  */
-router.get('/persons', async (req, res) => {
+router.get('/', async (req, res) => {
   try {
     const persons = await Person.find();
     res.status(200).json(persons);
@@ -44,7 +44,6 @@ router.get('/persons', async (req, res) => {
 });
 
 // Operation: POST
-// Path: /api/persons
 /**
  * @openapi
  * /api/persons:
@@ -89,7 +88,7 @@ router.get('/persons', async (req, res) => {
  *       501:
  *         description: MongoDB Exception
  */
-router.post('/persons', async (req, res) => {
+router.post('/', async (req, res) => {
   try {
     // Create a new object literal named newPerson and map the RequestBody fields to its properties
     const newPerson = new Person({
