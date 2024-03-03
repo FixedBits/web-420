@@ -250,14 +250,15 @@ router.put("/:id", async (req, res) => {
  *       '501':
  *         description: MongoDB Exception
  */
+
 router.delete("/:id", async (req, res) => {
   try {
     const id = req.params.id;
     Composer.findByIdAndDelete({ _id: id }, function (err, composer) {
       if (composer) {
-        // res.json(composer);
         res.status(200).send({
-          message: `Deleted: ${composer}`,
+          message: "Deleted",
+          composer: composer
         });
       } else {
         res.status(501).send({
