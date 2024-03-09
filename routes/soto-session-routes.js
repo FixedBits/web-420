@@ -124,4 +124,5 @@ router.post("/login", async (req, res) => {
   }
 });
 
+// Export the router
 module.exports = router;
