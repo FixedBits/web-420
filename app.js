@@ -18,6 +18,7 @@ const composerAPI = require("./routes/soto-composer-routes");
 const personAPI = require("./routes/soto-person-routes");
 const userAPI = require("./routes/soto-session-routes"); 
 const customerAPI = require("./routes/soto-node-shopper-routes"); 
+const teamAPI = require("./routes/soto-team-routes");
 
 
 // Create a new express application
@@ -67,6 +68,8 @@ app.use("/api/composers", composerAPI);
 app.use("/api/persons", personAPI);
 app.use("/api/users", userAPI);
 app.use("/api/customers", customerAPI);
+app.use("/api/teams", teamAPI);
+
 
 
 // Start the server
