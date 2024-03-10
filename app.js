@@ -35,11 +35,8 @@ const uri = 'mongodb+srv://web420_user:s3cret@bellevueuniversity.heixdsl.mongodb
 
 // Connect to MongoDB
 mongoose.connect(uri, {
-    promiseLibrary: require("bluebird"),
     useUnifiedTopology: true,
-    useNewUrlParser: true,
-    useFindAndModify: false,
-    useCreateIndex: true
+    useNewUrlParser: true
 }).then(() => {
     console.log("Connection to web420DB on MongoDB Atlas successful");
 }).catch(err => {
