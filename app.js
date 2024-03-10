@@ -66,7 +66,8 @@ app.use("/api/users", userAPI);
 app.use("/api/customers", customerAPI);
 app.use("/api/teams", teamAPI);
 
-// Root URL handler
+// Root URL handler - Redirects the root URL to '/api-docs' path, 
+// allowing the Swagger UI to be displayed when the root URL of the application is accessed in render
 app.get('/', (req, res) => {
     res.redirect('/api-docs');
 });
