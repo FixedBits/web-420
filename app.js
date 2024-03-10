@@ -32,7 +32,7 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 
 // MongoDB connection string
-const uri = "mongodb+srv://web420_user:s3cret@bellevueuniversity.heixdsl.mongodb.net/web420DB?retryWrites=true&w=majority";
+const uri = 'mongodb+srv://web420_user:s3cret@bellevueuniversity.heixdsl.mongodb.net/web420DB?retryWrites=true&w=majority';
 
 // Connect to MongoDB
 mongoose.connect(uri, {
