@@ -7,11 +7,6 @@
 ;===========================================
 */
 
-// Route handler for the root URL
-app.get('/', (req, res) => {
-  res.send('Welcome to my API!');
-
-
 // npm packages
 // Import routes
 const express = require("express");
@@ -76,7 +71,6 @@ app.use("/api/customers", customerAPI);
 app.use("/api/teams", teamAPI);
 
 
-});
 
 // Start the server
 http.createServer(app).listen(port, () => {
