@@ -20,7 +20,6 @@ const userAPI = require("./routes/soto-session-routes");
 const customerAPI = require("./routes/soto-node-shopper-routes"); 
 const teamAPI = require("./routes/soto-team-routes");
 
-
 // Create a new express application
 const app = express();
 
@@ -38,7 +37,9 @@ const uri = 'mongodb+srv://web420_user:s3cret@bellevueuniversity.heixdsl.mongodb
 mongoose.connect(uri, {
     promiseLibrary: require("bluebird"),
     useUnifiedTopology: true,
-    useNewUrlParser: true
+    useNewUrlParser: true,
+    useFindAndModify: false,
+    useCreateIndex: true
 }).then(() => {
     console.log("Connection to web420DB on MongoDB Atlas successful");
 }).catch(err => {
@@ -69,8 +70,6 @@ app.use("/api/persons", personAPI);
 app.use("/api/users", userAPI);
 app.use("/api/customers", customerAPI);
 app.use("/api/teams", teamAPI);
-
-
 
 // Start the server
 http.createServer(app).listen(port, () => {
