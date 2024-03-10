@@ -14,8 +14,6 @@ const http = require("http");
 const swaggerUi = require("swagger-ui-express");
 const swaggerJsdoc = require("swagger-jsdoc");
 const mongoose = require("mongoose");
-const path = require("path");
-const fs = require("fs");
 
 const composerAPI = require("./routes/soto-composer-routes");
 const personAPI = require("./routes/soto-person-routes");
@@ -67,18 +65,6 @@ app.use("/api/persons", personAPI);
 app.use("/api/users", userAPI);
 app.use("/api/customers", customerAPI);
 app.use("/api/teams", teamAPI);
-
-/*
-app.get('/', (req, res) => {
-    res.json({
-        "composers": "/api/composers",
-        "persons": "/api/persons",
-        "users": "/api/users",
-        "customers": "/api/customers",
-        "teams": "/api/teams"
-    });
-});
-*/
 
 // Root URL handler
 app.get('/', (req, res) => {
