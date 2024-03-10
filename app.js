@@ -68,7 +68,7 @@ app.use("/api/users", userAPI);
 app.use("/api/customers", customerAPI);
 app.use("/api/teams", teamAPI);
 
-// New root URL handler
+/*
 app.get('/', (req, res) => {
     res.json({
         "composers": "/api/composers",
@@ -77,6 +77,12 @@ app.get('/', (req, res) => {
         "customers": "/api/customers",
         "teams": "/api/teams"
     });
+});
+*/
+
+// Root URL handler
+app.get('/', (req, res) => {
+    res.redirect('/api-docs');
 });
 
 // Start the server
