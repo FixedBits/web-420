@@ -34,10 +34,7 @@ app.use(express.urlencoded({extended: true}));
 const uri = 'mongodb+srv://web420_user:s3cret@bellevueuniversity.heixdsl.mongodb.net/web420DB?retryWrites=true&w=majority';
 
 // Connect to MongoDB
-mongoose.connect(uri, {
-    useUnifiedTopology: true,
-    useNewUrlParser: true
-}).then(() => {
+mongoose.connect(uri).then(() => {
     console.log("Connection to web420DB on MongoDB Atlas successful");
 }).catch(err => {
     console.log(`MongoDB Error: ${err.message}`);
